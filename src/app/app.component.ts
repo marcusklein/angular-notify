@@ -40,7 +40,12 @@ export class AppComponent {
         })
       };
 
-      return this.http.post<any>(`http://localhost:3000/sub`, sub, httpOptions);
+      const subscription = {
+        searchUrl: 'testurl.com',
+        pushSubscription: sub
+      };
+
+      return this.http.post<any>(`http://localhost:3000/subscription`, subscription, httpOptions);
     })
     .then(result => {
       result.subscribe(back => console.log(back));
